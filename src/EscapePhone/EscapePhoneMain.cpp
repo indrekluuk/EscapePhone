@@ -19,13 +19,25 @@ EscapePhoneMain::EscapePhoneMain() {
 void EscapePhoneMain::run() {
 
   while(true) {
+
+    if (isHangUp()) {
+      mp3.stop();
+    } else {
+      mp3.play();
+    }
+
+    /*
     if (isHangUp()) {
       ringer.ring();
     } else {
       ringer.stop();
     }
+     */
+
     ringer.process();
   }
+
+
 }
 
 
@@ -33,7 +45,7 @@ void EscapePhoneMain::run() {
 
 
 bool EscapePhoneMain::isHangUp() {
-  return digitalRead(PIN_HANG_UP);
+return digitalRead(PIN_HANG_UP);
 }
 
 
