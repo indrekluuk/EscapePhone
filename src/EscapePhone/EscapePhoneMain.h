@@ -21,7 +21,12 @@ class EscapePhoneMain {
     Ringer ringer = Ringer(PIN_RING_1, PIN_RING_2);
 
 public:
+    EscapePhoneMain();
     void run();
+
+
+private:
+    bool isHangUp();
 
 };
 

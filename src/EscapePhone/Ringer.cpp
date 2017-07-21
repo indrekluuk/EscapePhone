@@ -13,8 +13,10 @@ Ringer::Ringer(uint8_t pin1, uint8_t pin2) : ringerPin1(pin1), ringerPin2(pin2) 
 }
 
 void Ringer::ring() {
-  timer = millis();
-  isPause = false;
+  if (!timer) {
+    timer = millis();
+    isPause = false;
+  }
 }
 
 

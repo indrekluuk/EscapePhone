@@ -8,17 +8,33 @@
 
 
 
+
+EscapePhoneMain::EscapePhoneMain() {
+  digitalWrite(PIN_HANG_UP, HIGH);
+}
+
+
+
+
 void EscapePhoneMain::run() {
 
-  delay(5000);
-
-
-  ringer.ring();
   while(true) {
+    if (isHangUp()) {
+      ringer.ring();
+    } else {
+      ringer.stop();
+    }
     ringer.process();
   }
 }
 
+
+
+
+
+bool EscapePhoneMain::isHangUp() {
+  return digitalRead(PIN_HANG_UP);
+}
 
 
 
