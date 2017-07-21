@@ -4,12 +4,19 @@
 
 #include "EscapePhoneMain.h"
 
-
+#include "Arduino.h"
 
 
 
 void EscapePhoneMain::run() {
 
+  delay(5000);
+
+
+  ringer.ring();
+  while(true) {
+    ringer.process();
+  }
 }
 
 
