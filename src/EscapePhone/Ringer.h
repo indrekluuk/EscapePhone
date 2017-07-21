@@ -12,8 +12,8 @@ class Ringer {
     static const uint32_t PAUSE_TIME_ms = 4000;
     static const uint32_t RING_TIME_ms = 2000;
 
-    static const uint32_t HIT_TIME_ms = 10;
-    static const uint32_t RING_PERIOD_ms = 100;
+    static const uint32_t HIT_TIME_ms = 20;
+    static const uint32_t RING_PERIOD_ms = 60;
 
 
     uint8_t ringerPin1;
