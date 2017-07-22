@@ -11,19 +11,19 @@
 
 EscapePhoneMain::EscapePhoneMain() {
   digitalWrite(PIN_HANG_UP, HIGH);
+  Serial.begin(9600);
 }
 
 
 
 
 void EscapePhoneMain::run() {
-
   while(true) {
 
     if (isHangUp()) {
-      mp3.stop();
+      //mp3.stop();
     } else {
-      mp3.play();
+      //mp3.play();
     }
 
     /*
@@ -35,6 +35,7 @@ void EscapePhoneMain::run() {
      */
 
     ringer.process();
+    dial.process();
   }
 
 
