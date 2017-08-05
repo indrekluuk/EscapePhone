@@ -6,24 +6,28 @@
 #define ESCAPEPHONE_DIAL_H
 
 #include "stdint.h"
+#include "Timer.h"
 
 
 class Dial {
 
+    enum Edge {
+        DIAL_FALLING,
+        DIAL_RISING,
+        DIAL_NONE
+    };
 
-    static const uint32_t DIAL_START_ms = 150;
+
     static const uint32_t DIAL_PULSE_EDGE_ms = 15;
     static const uint32_t DIAL_END_ms = 150;
 
 
 
     uint8_t dialPin;
-
-    bool isDial = false;
     int8_t pinStatus = 1;
-    uint32_t pinStatusTimer = 0;
-    bool isPulseCheck = false;
-    uint8_t pulseCount = 0;
+    uint8_t risingEdgeCount = 0;
+    Timer pulseEdgeTimer = Timer(DIAL_PULSE_EDGE_ms);
+    Timer dialEndTimer = Timer(DIAL_END_ms);
 
 public:
 
@@ -32,6 +36,7 @@ public:
 
 
 private:
+    Edge getDialPinStatus();
     void addNumber(uint8_t n);
 
 

@@ -14,51 +14,57 @@
 
 
 void Dial::process() {
-  if (pinStatusTimer > millis()) {
-    pinStatusTimer = 0;
-  }
-  uint32_t time = millis() - pinStatusTimer;
-
-
-  if (isDial) {
-    if ((pinStatus == 1) && (time > DIAL_END_ms)) {
-      isDial = false;
-      if (pulseCount > 0) {
-        addNumber(pulseCount == 10 ? 0 : pulseCount);
-      }
-
-    } else if (time > DIAL_PULSE_EDGE_ms) {
-      if (pinStatus == 1) {
-        isPulseCheck = true;
-      } else {
-        if (isPulseCheck) {
-          pulseCount++;
-        }
-        isPulseCheck = false;
-      }
-    }
-
-  } else {
-    if ((pinStatus == 0) && (time > DIAL_START_ms)) {
-      isDial = true;
-      isPulseCheck = false;
-      pulseCount = 0;
-    }
+  switch (getDialPinStatus()) {
+    case DIAL_NONE:
+      break;
+    case DIAL_FALLING:
+      dialEndTimer.stop();
+      break;
+    case DIAL_RISING:
+      dialEndTimer.start();
+      risingEdgeCount++;
+      break;
   }
 
-
-  int8_t currentPinStatus = digitalRead(dialPin);
-  if (pinStatus != currentPinStatus) {
-    pinStatus = currentPinStatus;
-    pinStatusTimer = millis();
+  if (dialEndTimer.isReady()) {
+    dialEndTimer.stop();
+    if (risingEdgeCount > 1) {
+      addNumber(risingEdgeCount == 11 ? 0 : (risingEdgeCount - 1));
+    }
+    risingEdgeCount = 0;
   }
 }
 
 
 
+Dial::Edge Dial::getDialPinStatus() {
+  Dial::Edge edge = DIAL_NONE;
+
+  int8_t currentPinStatus = digitalRead(dialPin);
+  if (currentPinStatus != pinStatus) {
+    if (!pulseEdgeTimer.isRunning()) {
+      pulseEdgeTimer.start();
+    }
+    if (pulseEdgeTimer.isReady()) {
+      if (currentPinStatus < pinStatus) {
+        edge = DIAL_FALLING;
+      } else if (currentPinStatus > pinStatus) {
+        edge = DIAL_RISING;
+      }
+      pinStatus = currentPinStatus;
+    }
+  } else {
+    pulseEdgeTimer.stop();
+  }
+
+  return edge;
+}
+
+
+
+
 void Dial::addNumber(uint8_t n) {
   Serial.println((int)n);
-
 }
 
 

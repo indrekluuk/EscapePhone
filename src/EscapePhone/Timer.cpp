@@ -7,32 +7,39 @@
 
 
 
+void Timer::start() {
+  endTime = millis() + time;
+  stopped = false;
+}
 
+void Timer::stop() {
+  stopped = true;
+}
+
+bool Timer::isRunning() {
+  return !stopped;
+}
 
 bool Timer::isReady() {
-  if (!ready) {
+  if (!stopped) {
     uint32_t currentTime = millis();
     uint32_t startTime = endTime - time;
 
     if (startTime > endTime) { // is overflow
       if ((currentTime > endTime) && (currentTime < startTime)) {
-        ready = true;
+        return true;
       }
     } else {
       if ((currentTime < startTime) || (currentTime > endTime)) {
-        ready = true;
+        return true;
       }
     }
   }
-  return ready;
+  return false;
 }
 
 
 
-void Timer::start() {
-  endTime = millis() + time;
-  ready = false;
-}
 
 
 

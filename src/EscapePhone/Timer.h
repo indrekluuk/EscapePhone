@@ -13,17 +13,19 @@ class Timer {
 
 
     uint32_t time : 31;
-    uint32_t ready : 1;
+    uint32_t stopped : 1;
     uint32_t endTime;
 
 public:
     Timer(uint32_t timerTime) {
       time = timerTime;
-      ready = true;
+      stopped = true;
     };
 
-    bool isReady();
     void start();
+    void stop();
+    bool isRunning();
+    bool isReady();
 
 
 };

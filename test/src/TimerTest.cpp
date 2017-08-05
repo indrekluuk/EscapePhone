@@ -13,7 +13,7 @@ static const uint32_t MAX_TIME = (uint32_t)-1;
 TEST(TimerTest, testFromTheBeginning) {
 
   Timer timer(500);
-  ASSERT_TRUE(timer.isReady());
+  ASSERT_FALSE(timer.isReady());
   timer.start();
   ASSERT_FALSE(timer.isReady());
   testSetMillis(499);
@@ -29,7 +29,7 @@ TEST(TimerTest, testInTheMiddle) {
   testSetMillis(10000);
 
   Timer timer(500);
-  ASSERT_TRUE(timer.isReady());
+  ASSERT_FALSE(timer.isReady());
   timer.start();
   ASSERT_FALSE(timer.isReady());
   testSetMillis(10499);
@@ -46,7 +46,7 @@ TEST(TimerTest, testInTheMiddle) {
 TEST(TimerTest, testOveflow) {
   testSetMillis(MAX_TIME - 199);
   Timer timer(500);
-  ASSERT_TRUE(timer.isReady());
+  ASSERT_FALSE(timer.isReady());
   timer.start();
   ASSERT_FALSE(timer.isReady());
   testSetMillis(MAX_TIME);
