@@ -26,13 +26,13 @@ void EscapePhoneMain::run() {
       //mp3.play();
     }
 
-    /*
+
     if (isHangUp()) {
       ringer.ring();
     } else {
       ringer.stop();
     }
-     */
+
 
     ringer.process();
     dial.process();
