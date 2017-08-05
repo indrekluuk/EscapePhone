@@ -24,7 +24,11 @@ include_directories(${gtest_SOURCE_DIR}/include)
 
 
 add_executable(runTests
-        test/src/test.cpp
+        src/EscapePhone/Timer.cpp
+
+        test/fake/Arduino.cpp
+
+        test/src/TimerTest.cpp
         )
 
 # link
