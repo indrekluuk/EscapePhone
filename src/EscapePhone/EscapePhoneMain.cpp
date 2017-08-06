@@ -21,32 +21,33 @@ void EscapePhoneMain::run() {
   while(true) {
 
     if (isHangUp()) {
-      //mp3.stop();
+      mp3.play();
     } else {
-      //mp3.play();
+      mp3.stop();
     }
 
 
     if (isHangUp()) {
-      ringer.ring();
+      //ringer.ring();
     } else {
-      ringer.stop();
+      //ringer.stop();
+    }
+
+    if (dial.getDialedNumber().isNumberDialed()) {
+      Serial.println(dial.getDialedNumber().getDialedNumber());
+      dial.getDialedNumber().reset();
     }
 
 
     ringer.process();
     dial.process();
   }
-
-
 }
 
 
 
-
-
 bool EscapePhoneMain::isHangUp() {
-return digitalRead(PIN_HANG_UP);
+  return digitalRead(PIN_HANG_UP);
 }
 
 

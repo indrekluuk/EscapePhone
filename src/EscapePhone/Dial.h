@@ -7,6 +7,7 @@
 
 #include "stdint.h"
 #include "Timer.h"
+#include "DialedNumber.h"
 
 
 class Dial {
@@ -29,10 +30,13 @@ class Dial {
     Timer pulseEdgeTimer = Timer(DIAL_PULSE_EDGE_ms);
     Timer dialEndTimer = Timer(DIAL_END_ms);
 
+    DialedNumber dialedNumber;
+
 public:
 
     Dial(uint8_t pin) : dialPin(pin) {}
     void process();
+    DialedNumber & getDialedNumber();
 
 
 private:

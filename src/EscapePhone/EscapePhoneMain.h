@@ -22,6 +22,7 @@ class EscapePhoneMain {
     static const uint8_t PIN_DIAL = 9;
 
 
+
     Mp3 mp3 = Mp3(PIN_MP3_RX, PIN_MP3_TX);
     Ringer ringer = Ringer(PIN_RING_1, PIN_RING_2);
     Dial dial = Dial(PIN_DIAL);
@@ -33,6 +34,11 @@ public:
 
 private:
     bool isHangUp();
+
+
+private:
+    uint8_t getNumberLength();
+
 
 };
 

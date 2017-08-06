@@ -33,6 +33,10 @@ void Dial::process() {
     }
     risingEdgeCount = 0;
   }
+
+  if (pinStatus == 0) {
+    dialedNumber.resetDialEndTimer();
+  }
 }
 
 
@@ -64,9 +68,15 @@ Dial::Edge Dial::getDialPinStatus() {
 
 
 void Dial::addNumber(uint8_t n) {
-  Serial.println((int)n);
+  dialedNumber.addNumber(n);
 }
 
+
+
+
+DialedNumber & Dial::getDialedNumber() {
+  return dialedNumber;
+}
 
 
 

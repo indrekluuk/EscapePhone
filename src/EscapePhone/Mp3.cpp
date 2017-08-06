@@ -22,7 +22,6 @@ Mp3::Mp3(uint8_t pinRx, uint8_t pinTx) : softwareSerial(pinRx, pinTx) {
 void Mp3::play() {
   if (!isPlaying) {
     player.next();
-    player.next(); // ignore hidden file.
     isPlaying = true;
   }
 }
