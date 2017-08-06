@@ -36,6 +36,8 @@ public:
     DeviceHangUp & getHangUp();
     DeviceDial & getDial();
 
+    void process();
+
 };
 
 

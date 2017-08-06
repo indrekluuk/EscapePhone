@@ -13,7 +13,11 @@ class StateHangUp : public StateBase {
 
 
 public:
+    StateHangUp(StateFactory & stateFactory, Devices & devices)
+        : StateBase(stateFactory, devices) {};
 
+
+    StateBase & processState() override;
 
 
 };

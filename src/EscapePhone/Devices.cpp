@@ -26,3 +26,10 @@ DeviceDial & Devices::getDial() {
 }
 
 
+
+void Devices::process() {
+  ringer.process();
+  dial.process();
+}
+
+

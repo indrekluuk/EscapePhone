@@ -6,20 +6,30 @@
 #define ESCAPEPHONE_STATEFACTORY_H
 
 
+#include "Devices.h"
 #include "StateHangUp.h"
-
+#include "StateDial.h"
 
 
 class StateFactory {
 
 
-    StateHangUp hangUp;
+    Devices & devices;
+    StateHangUp hangUpState;
+    StateDial dialState;
+
 
 
 public:
+    StateFactory(Devices & devices) :
+        devices(devices),
+        hangUpState(*this, devices),
+        dialState(*this, devices)
+    {}
 
 
-    StateHangUp & getHangUp();
+    StateHangUp & getHangUpState();
+    StateDial & getDialState();
 
 
 

@@ -62,6 +62,10 @@ bool DeviceDialedNumber::isNumber(const char * checkNumber) {
 }
 
 
+uint8_t DeviceDialedNumber::getDialedNumberLength() {
+  return getNumberLength(dialedNumber);
+}
+
 
 
 uint8_t DeviceDialedNumber::getNumberLength(const char * n) {

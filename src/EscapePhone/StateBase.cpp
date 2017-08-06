@@ -7,10 +7,6 @@
 
 
 
-StateBase & StateBase::processState() {
-  return *this;
-}
-
 
 
 

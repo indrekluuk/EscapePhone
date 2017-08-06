@@ -30,6 +30,7 @@ public:
     bool isNumberDialed();
     const char * getDialedNumber();
     bool isNumber(const char * checkNumber);
+    uint8_t getDialedNumberLength();
 
     uint8_t getNumberLength(const char * n);
 

@@ -36,7 +36,9 @@ public:
 
     DeviceDial(uint8_t pin) : dialPin(pin) {}
     void process();
+    bool isDialInProgress();
     DeviceDialedNumber & getDialedNumber();
+
 
 
 private:

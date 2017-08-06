@@ -9,8 +9,12 @@
 
 
 
-StateHangUp & StateFactory::getHangUp() {
-  return hangUp;
+StateHangUp & StateFactory::getHangUpState() {
+  return hangUpState;
 }
 
 
+StateDial & StateFactory::getDialState() {
+  dialState.reset();
+  return dialState;
+}

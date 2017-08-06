@@ -13,8 +13,8 @@
 
 class EscapePhoneMain {
 
-    StateFactory stateFactory;
     Devices devices;
+    StateFactory stateFactory = StateFactory(devices);
 
     StateBase * currentSate = nullptr;
 

@@ -73,6 +73,11 @@ void DeviceDial::addNumber(uint8_t n) {
 
 
 
+bool DeviceDial::isDialInProgress() {
+  return risingEdgeCount > 0 || dialedNumber.getDialedNumberLength() > 0;
+}
+
+
 
 DeviceDialedNumber & DeviceDial::getDialedNumber() {
   return dialedNumber;

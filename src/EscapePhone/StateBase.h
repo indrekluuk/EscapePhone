@@ -6,12 +6,22 @@
 #define ESCAPEPHONE_STATEBASE_H
 
 
+
+class StateFactory;
+class Devices;
+
+
 class StateBase {
 
+protected:
+    StateFactory & stateFactory;
+    Devices & devices;
 
 public:
+    StateBase(StateFactory & stateFactory, Devices & devices)
+        : stateFactory(stateFactory), devices(devices) {};
 
-    StateBase & processState();
+    virtual StateBase & processState() = 0;
 
 };
 
