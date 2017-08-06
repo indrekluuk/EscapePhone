@@ -29,6 +29,11 @@ void DeviceMp3::play(Mp3 mp3) {
 }
 
 
+bool DeviceMp3::isPlaying() {
+  return !player.available();
+}
+
+
 void DeviceMp3::stop() {
   play(MP3_NONE);
 }

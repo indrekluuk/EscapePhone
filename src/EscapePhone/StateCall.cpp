@@ -17,6 +17,10 @@ StateBase & StateCall::process() {
     return stateFactory.initHangUpState();
   }
 
+  if (!devices.getMp3().isPlaying()) {
+    return stateFactory.initBusyState();
+  }
+
   return *this;
 }
 

@@ -10,6 +10,7 @@
 
 
 StateHangUp & StateFactory::initHangUpState() {
+  stateHangUp.init();
   return stateHangUp;
 }
 

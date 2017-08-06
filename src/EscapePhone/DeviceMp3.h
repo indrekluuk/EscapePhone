@@ -34,6 +34,7 @@ public:
     DeviceMp3(uint8_t pinRx, uint8_t pinTx);
 
     void play(Mp3 mp3);
+    bool isPlaying();
     void stop();
 
 };
