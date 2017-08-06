@@ -18,7 +18,9 @@ StateBase & StateDial::processState() {
     return stateFactory.getHangUpState();
   }
 
-  if (devices.getDial().isDialInProgress()) {
+  if (devices.getDial().getDialedNumber().isNumberDialed()) {
+    return stateFactory.getBusyState();
+  } else if (devices.getDial().isDialInProgress()) {
     devices.getMp3().stop();
   } else {
     devices.getMp3().play(DeviceMp3::MP3_DIAL_TONE);

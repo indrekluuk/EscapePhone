@@ -9,6 +9,7 @@
 #include "Devices.h"
 #include "StateHangUp.h"
 #include "StateDial.h"
+#include "StateBusy.h"
 
 
 class StateFactory {
@@ -17,6 +18,7 @@ class StateFactory {
     Devices & devices;
     StateHangUp hangUpState;
     StateDial dialState;
+    StateBusy busyState;
 
 
 
@@ -24,12 +26,15 @@ public:
     StateFactory(Devices & devices) :
         devices(devices),
         hangUpState(*this, devices),
-        dialState(*this, devices)
+        dialState(*this, devices),
+        busyState(*this, devices)
     {}
 
 
     StateHangUp & getHangUpState();
     StateDial & getDialState();
+    StateBusy & getBusyState();
+
 
 
 

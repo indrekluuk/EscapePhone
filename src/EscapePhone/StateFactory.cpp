@@ -18,3 +18,8 @@ StateDial & StateFactory::getDialState() {
   dialState.reset();
   return dialState;
 }
+
+StateBusy & StateFactory::getBusyState() {
+  return busyState;
+}
+

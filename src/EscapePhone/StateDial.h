@@ -13,8 +13,6 @@
 class StateDial : public StateBase {
 
 
-    bool isDialling = false;
-
 public:
     StateDial(StateFactory & stateFactory, Devices & devices)
         : StateBase(stateFactory, devices) {};
