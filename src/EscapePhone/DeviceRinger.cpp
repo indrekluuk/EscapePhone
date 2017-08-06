@@ -2,10 +2,10 @@
 // Created by indrek on 21.07.2017.
 //
 
-#include "Ringer.h"
+#include "DeviceRinger.h"
 #include "Arduino.h"
 
-Ringer::Ringer(uint8_t pin1, uint8_t pin2) : ringerPin1(pin1), ringerPin2(pin2) {
+DeviceRinger::DeviceRinger(uint8_t pin1, uint8_t pin2) : ringerPin1(pin1), ringerPin2(pin2) {
   pinMode(ringerPin1, OUTPUT);
   pinMode(ringerPin2, OUTPUT);
   digitalWrite(ringerPin1, LOW);
@@ -14,17 +14,17 @@ Ringer::Ringer(uint8_t pin1, uint8_t pin2) : ringerPin1(pin1), ringerPin2(pin2) 
   hitInterval.start();
 }
 
-void Ringer::ring() {
+void DeviceRinger::ring() {
   isRinging = true;
 }
 
 
-void Ringer::stop() {
+void DeviceRinger::stop() {
   isRinging = false;
 }
 
 
-void Ringer::process() {
+void DeviceRinger::process() {
   if (isRinging) {
     if (pauseTimer.isRunning()) {
       ringerOff();
@@ -50,13 +50,13 @@ void Ringer::process() {
 }
 
 
-void Ringer::ringerOff() {
+void DeviceRinger::ringerOff() {
   digitalWrite(ringerPin1, LOW);
   digitalWrite(ringerPin2, LOW);
 }
 
 
-void Ringer::processRing() {
+void DeviceRinger::processRing() {
   if (hitInterval.isReady()) {
     if (hitDirection) {
       digitalWrite(ringerPin1, HIGH);

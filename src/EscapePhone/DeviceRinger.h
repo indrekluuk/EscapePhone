@@ -2,14 +2,14 @@
 // Created by indrek on 21.07.2017.
 //
 
-#ifndef ESCAPEPHONE_RINGER_H
-#define ESCAPEPHONE_RINGER_H
+#ifndef ESCAPEPHONE_DEVICERINGER_H
+#define ESCAPEPHONE_DEVICERINGER_H
 
 #include <stdint.h>
 #include "Timer.h"
 
 
-class Ringer {
+class DeviceRinger {
     static const uint32_t RING_TIME_ms = 2000;
     static const uint32_t PAUSE_TIME_ms = 4000;
     static const uint32_t HIT_INTERVAL_ms = 30;
@@ -27,7 +27,7 @@ class Ringer {
     Timer hitDuration = Timer(HIT_DURATION_ms);
 
 public:
-    Ringer(uint8_t pin1, uint8_t pin2);
+    DeviceRinger(uint8_t pin1, uint8_t pin2);
 
     void ring();
     void stop();
@@ -41,4 +41,4 @@ private:
 };
 
 
-#endif //ESCAPEPHONE_RINGER_H
+#endif //ESCAPEPHONE_DEVICERINGER_H

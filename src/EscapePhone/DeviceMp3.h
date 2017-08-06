@@ -2,8 +2,8 @@
 // Created by indrek on 21.07.2017.
 //
 
-#ifndef ESCAPEPHONE_MP3_H
-#define ESCAPEPHONE_MP3_H
+#ifndef ESCAPEPHONE_DEVICEMP3_H
+#define ESCAPEPHONE_DEVICEMP3_H
 
 
 #include "Arduino.h"
@@ -12,7 +12,7 @@
 
 
 
-class Mp3 {
+class DeviceMp3 {
 
 
     SoftwareSerial softwareSerial;
@@ -21,7 +21,7 @@ class Mp3 {
     bool isPlaying = false;
 
 public:
-    Mp3(uint8_t pinRx, uint8_t pinTx);
+    DeviceMp3(uint8_t pinRx, uint8_t pinTx);
 
     void play();
     void stop();
@@ -29,4 +29,4 @@ public:
 };
 
 
-#endif //ESCAPEPHONE_MP3_H
+#endif //ESCAPEPHONE_DEVICEMP3_H

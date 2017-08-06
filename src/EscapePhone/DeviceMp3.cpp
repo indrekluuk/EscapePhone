@@ -2,11 +2,11 @@
 // Created by indrek on 21.07.2017.
 //
 
-#include "Mp3.h"
+#include "DeviceMp3.h"
 
 
 
-Mp3::Mp3(uint8_t pinRx, uint8_t pinTx) : softwareSerial(pinRx, pinTx) {
+DeviceMp3::DeviceMp3(uint8_t pinRx, uint8_t pinTx) : softwareSerial(pinRx, pinTx) {
   softwareSerial.begin(9600);
 
   if (!player.begin(softwareSerial)) {  //Use softwareSerial to communicate with mp3.
@@ -19,7 +19,7 @@ Mp3::Mp3(uint8_t pinRx, uint8_t pinTx) : softwareSerial(pinRx, pinTx) {
 
 
 
-void Mp3::play() {
+void DeviceMp3::play() {
   if (!isPlaying) {
     player.next();
     isPlaying = true;
@@ -27,7 +27,7 @@ void Mp3::play() {
 }
 
 
-void Mp3::stop() {
+void DeviceMp3::stop() {
   if (isPlaying) {
     player.stop();
     isPlaying = false;

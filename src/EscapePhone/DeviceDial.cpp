@@ -2,7 +2,7 @@
 // Created by indrek on 22.07.2017.
 //
 
-#include "Dial.h"
+#include "DeviceDial.h"
 #include "Arduino.h"
 
 
@@ -13,7 +13,7 @@
 
 
 
-void Dial::process() {
+void DeviceDial::process() {
   switch (getDialPinStatus()) {
     case DIAL_NONE:
       break;
@@ -41,8 +41,8 @@ void Dial::process() {
 
 
 
-Dial::Edge Dial::getDialPinStatus() {
-  Dial::Edge edge = DIAL_NONE;
+DeviceDial::Edge DeviceDial::getDialPinStatus() {
+  DeviceDial::Edge edge = DIAL_NONE;
 
   int8_t currentPinStatus = digitalRead(dialPin);
   if (currentPinStatus != pinStatus) {
@@ -67,14 +67,14 @@ Dial::Edge Dial::getDialPinStatus() {
 
 
 
-void Dial::addNumber(uint8_t n) {
+void DeviceDial::addNumber(uint8_t n) {
   dialedNumber.addNumber(n);
 }
 
 
 
 
-DialedNumber & Dial::getDialedNumber() {
+DeviceDialedNumber & DeviceDial::getDialedNumber() {
   return dialedNumber;
 }
 

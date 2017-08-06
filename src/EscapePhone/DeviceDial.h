@@ -2,15 +2,15 @@
 // Created by indrek on 22.07.2017.
 //
 
-#ifndef ESCAPEPHONE_DIAL_H
-#define ESCAPEPHONE_DIAL_H
+#ifndef ESCAPEPHONE_DEVICEDIAL_H
+#define ESCAPEPHONE_DEVICEDIAL_H
 
 #include "stdint.h"
 #include "Timer.h"
-#include "DialedNumber.h"
+#include "DeviceDialedNumber.h"
 
 
-class Dial {
+class DeviceDial {
 
     enum Edge {
         DIAL_FALLING,
@@ -30,13 +30,13 @@ class Dial {
     Timer pulseEdgeTimer = Timer(DIAL_PULSE_EDGE_ms);
     Timer dialEndTimer = Timer(DIAL_END_ms);
 
-    DialedNumber dialedNumber;
+    DeviceDialedNumber dialedNumber;
 
 public:
 
-    Dial(uint8_t pin) : dialPin(pin) {}
+    DeviceDial(uint8_t pin) : dialPin(pin) {}
     void process();
-    DialedNumber & getDialedNumber();
+    DeviceDialedNumber & getDialedNumber();
 
 
 private:
@@ -47,4 +47,4 @@ private:
 };
 
 
-#endif //ESCAPEPHONE_DIAL_H
+#endif //ESCAPEPHONE_DEVICEDIAL_H

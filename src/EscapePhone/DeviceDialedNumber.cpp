@@ -2,24 +2,24 @@
 // Created by indrek on 6.08.2017.
 //
 
-#include "DialedNumber.h"
+#include "DeviceDialedNumber.h"
 
 
 
 
-DialedNumber::DialedNumber() {
+DeviceDialedNumber::DeviceDialedNumber() {
   reset();
 }
 
 
-void DialedNumber::reset() {
+void DeviceDialedNumber::reset() {
   dialedNumber[0] = 0;
   dialEndTimer.stop();
 }
 
 
 
-void DialedNumber::addNumber(uint8_t number) {
+void DeviceDialedNumber::addNumber(uint8_t number) {
   if (!dialEndTimer.isRunning() || !dialEndTimer.isReady()) {
     uint8_t length = getNumberLength(dialedNumber);
     if (length < MAX_NUMBER_LENGTH) {
@@ -30,22 +30,22 @@ void DialedNumber::addNumber(uint8_t number) {
 }
 
 
-void DialedNumber::resetDialEndTimer() {
+void DeviceDialedNumber::resetDialEndTimer() {
   dialEndTimer.start();
 }
 
 
-bool DialedNumber::isNumberDialed() {
+bool DeviceDialedNumber::isNumberDialed() {
   return dialEndTimer.isReady();
 }
 
 
-const char * DialedNumber::getDialedNumber() {
+const char * DeviceDialedNumber::getDialedNumber() {
   return dialedNumber;
 }
 
 
-bool DialedNumber::isNumber(const char * checkNumber) {
+bool DeviceDialedNumber::isNumber(const char * checkNumber) {
   uint8_t dialedNumberLength = getNumberLength(dialedNumber);
   uint8_t checkNumberLength = getNumberLength(checkNumber);
 
@@ -64,7 +64,7 @@ bool DialedNumber::isNumber(const char * checkNumber) {
 
 
 
-uint8_t DialedNumber::getNumberLength(const char * n) {
+uint8_t DeviceDialedNumber::getNumberLength(const char * n) {
   uint8_t length = 0;
   while(n[length] != 0) {
     length++;

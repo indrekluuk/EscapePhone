@@ -2,15 +2,15 @@
 // Created by indrek on 6.08.2017.
 //
 
-#ifndef ESCAPEPHONE_DIALEDNUMBER_H
-#define ESCAPEPHONE_DIALEDNUMBER_H
+#ifndef ESCAPEPHONE_DEVICEDIALEDNUMBER_H
+#define ESCAPEPHONE_DEVICEDIALEDNUMBER_H
 
 
 #include <stdint.h>
 #include "Timer.h"
 
 
-class DialedNumber {
+class DeviceDialedNumber {
 
     static const uint32_t NUMBER_DIAL_END_ms = 3000;
 
@@ -22,7 +22,7 @@ class DialedNumber {
 
 
 public:
-    DialedNumber();
+    DeviceDialedNumber();
     void reset();
     void addNumber(uint8_t number);
     void resetDialEndTimer();
@@ -36,4 +36,4 @@ public:
 };
 
 
-#endif //ESCAPEPHONE_DIALEDNUMBER_H
+#endif //ESCAPEPHONE_DEVICEDIALEDNUMBER_H

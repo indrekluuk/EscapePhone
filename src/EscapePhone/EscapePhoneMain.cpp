@@ -3,52 +3,47 @@
 //
 
 #include "EscapePhoneMain.h"
-
 #include "Arduino.h"
 
 
 
 
 EscapePhoneMain::EscapePhoneMain() {
-  digitalWrite(PIN_HANG_UP, HIGH);
   Serial.begin(9600);
 }
 
 
 
-
 void EscapePhoneMain::run() {
-  while(true) {
+  currentSate = &stateFactory.getHangUp();
 
-    if (isHangUp()) {
-      mp3.play();
+  while(true) {
+    currentSate = &currentSate->processState();
+
+    if (devices.getHangUp().isHangUp()) {
+      devices.getMp3().play();
     } else {
-      mp3.stop();
+      devices.getMp3().stop();
     }
 
 
-    if (isHangUp()) {
+    if (devices.getHangUp().isHangUp()) {
       //ringer.ring();
     } else {
       //ringer.stop();
     }
 
-    if (dial.getDialedNumber().isNumberDialed()) {
-      Serial.println(dial.getDialedNumber().getDialedNumber());
-      dial.getDialedNumber().reset();
+    if (devices.getDial().getDialedNumber().isNumberDialed()) {
+      Serial.println(devices.getDial().getDialedNumber().getDialedNumber());
+      devices.getDial().getDialedNumber().reset();
     }
 
 
-    ringer.process();
-    dial.process();
+    devices.getRinger().process();
+    devices.getDial().process();
   }
 }
 
-
-
-bool EscapePhoneMain::isHangUp() {
-  return digitalRead(PIN_HANG_UP);
-}
 
 
 
