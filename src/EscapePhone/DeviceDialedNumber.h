@@ -16,7 +16,7 @@ class DeviceDialedNumber {
 
 
 
-    static const uint8_t MAX_NUMBER_LENGTH = 15;
+    static const uint8_t MAX_NUMBER_LENGTH = 25;
     char dialedNumber[MAX_NUMBER_LENGTH + 1];
     Timer dialEndTimer = Timer(NUMBER_DIAL_END_ms);
 

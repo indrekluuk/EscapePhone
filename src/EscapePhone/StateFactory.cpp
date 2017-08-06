@@ -31,3 +31,14 @@ StateCall & StateFactory::initCallState(DeviceMp3::Mp3 mp3) {
 }
 
 
+StateRinging & StateFactory::initRingingState(DeviceMp3::Mp3 mp3) {
+  stateRinging.init(mp3);
+  return stateRinging;
+}
+
+
+void StateFactory::setCallBack(uint32_t time_sec, DeviceMp3::Mp3 mp3) {
+  callBackTime = time_sec;
+  callBackMp3 = mp3;
+}
+

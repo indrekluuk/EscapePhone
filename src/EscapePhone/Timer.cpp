@@ -7,6 +7,16 @@
 
 
 
+Timer::Timer(uint32_t timerTime) {
+  set(timerTime);
+}
+
+
+void Timer::set(uint32_t timerTime) {
+  time = timerTime;
+  stopped = true;
+}
+
 void Timer::start() {
   endTime = millis() + time;
   stopped = false;

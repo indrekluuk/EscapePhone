@@ -11,6 +11,7 @@
 #include "StateDial.h"
 #include "StateBusy.h"
 #include "StateCall.h"
+#include "StateRinging.h"
 
 
 class StateFactory {
@@ -21,16 +22,23 @@ class StateFactory {
     StateDial stateDial;
     StateBusy stateBusy;
     StateCall stateCall;
+    StateRinging stateRinging;
+
 
 
 
 public:
+    uint32_t callBackTime = 0;
+    DeviceMp3::Mp3 callBackMp3 = DeviceMp3::MP3_NONE;
+
+
     StateFactory(Devices & devices) :
         devices(devices),
         stateHangUp(*this, devices),
         stateDial(*this, devices),
         stateBusy(*this, devices),
-        stateCall(*this, devices)
+        stateCall(*this, devices),
+        stateRinging(*this, devices)
     {}
 
 
@@ -38,6 +46,9 @@ public:
     StateDial & initDialState();
     StateBusy & initBusyState();
     StateCall & initCallState(DeviceMp3::Mp3 mp3);
+    StateRinging & initRingingState(DeviceMp3::Mp3 mp3);
+
+    void setCallBack(uint32_t time_sec, DeviceMp3::Mp3 mp3);
 
 
 

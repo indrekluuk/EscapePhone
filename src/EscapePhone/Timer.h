@@ -17,10 +17,9 @@ class Timer {
     uint32_t endTime;
 
 public:
-    Timer(uint32_t timerTime) {
-      time = timerTime;
-      stopped = true;
-    };
+    Timer(uint32_t timerTime);
+
+    void set(uint32_t timerTime);
 
     void start();
     void stop();

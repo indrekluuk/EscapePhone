@@ -7,9 +7,13 @@
 
 
 #include "StateBase.h"
+#include "Timer.h"
 
 
 class StateHangUp : public StateBase {
+
+
+    Timer callbackTimer = Timer(0);
 
 
 public:

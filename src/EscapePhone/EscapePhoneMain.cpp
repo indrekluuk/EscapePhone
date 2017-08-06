@@ -10,6 +10,7 @@
 
 EscapePhoneMain::EscapePhoneMain() {
   Serial.begin(9600);
+
 }
 
 
