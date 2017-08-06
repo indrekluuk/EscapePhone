@@ -9,12 +9,14 @@
 
 #include "StateBase.h"
 #include "PhoneBook.h"
+#include "Timer.h"
 
 
 class StateDial : public StateBase {
 
 
     PhoneBook phoneBook;
+    Timer dialTimeout = Timer(30000);
 
 
 public:
