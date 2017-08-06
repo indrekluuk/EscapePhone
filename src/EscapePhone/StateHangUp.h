@@ -17,7 +17,8 @@ public:
         : StateBase(stateFactory, devices) {};
 
 
-    StateBase & processState() override;
+    void init();
+    StateBase & process() override;
 
 
 };

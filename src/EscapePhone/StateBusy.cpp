@@ -7,13 +7,15 @@
 
 
 
-StateBase & StateBusy::processState() {
-  if (devices.getHangUp().isHangUp()) {
-    return stateFactory.getHangUpState();
-  }
-
+void StateBusy::init() {
   devices.getMp3().play(DeviceMp3::MP3_BUSY_TONE);
+}
 
+
+StateBase & StateBusy::process() {
+  if (devices.getHangUp().isHangUp()) {
+    return stateFactory.initHangUpState();
+  }
   return *this;
 }
 

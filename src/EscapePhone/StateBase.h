@@ -21,7 +21,7 @@ public:
     StateBase(StateFactory & stateFactory, Devices & devices)
         : stateFactory(stateFactory), devices(devices) {};
 
-    virtual StateBase & processState() = 0;
+    virtual StateBase & process() = 0;
 
 };
 

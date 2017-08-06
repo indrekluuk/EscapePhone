@@ -6,12 +6,17 @@
 #include "StateFactory.h"
 
 
-StateBase & StateHangUp::processState() {
+
+void StateHangUp::init() {
   devices.getMp3().stop();
+}
+
+
+StateBase & StateHangUp::process() {
   if (devices.getHangUp().isHangUp()) {
     return *this;
   } else {
-    return stateFactory.getDialState();
+    return stateFactory.initDialState();
   }
 }
 

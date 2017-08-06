@@ -22,9 +22,8 @@ public:
         : StateBase(stateFactory, devices),
           phoneBook(stateFactory) {};
 
-    void reset();
-
-    StateBase & processState() override;
+    void init();
+    StateBase & process() override;
 
 };
 

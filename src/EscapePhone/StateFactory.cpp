@@ -9,22 +9,23 @@
 
 
 
-StateHangUp & StateFactory::getHangUpState() {
+StateHangUp & StateFactory::initHangUpState() {
   return stateHangUp;
 }
 
 
-StateDial & StateFactory::getDialState() {
-  stateDial.reset();
+StateDial & StateFactory::initDialState() {
+  stateDial.init();
   return stateDial;
 }
 
-StateBusy & StateFactory::getBusyState() {
+StateBusy & StateFactory::initBusyState() {
+  stateBusy.init();
   return stateBusy;
 }
 
-StateCall & StateFactory::getCallState(DeviceMp3::Mp3 mp3) {
-  stateCall.setMp3(mp3);
+StateCall & StateFactory::initCallState(DeviceMp3::Mp3 mp3) {
+  stateCall.init(mp3);
   return stateCall;
 }
 

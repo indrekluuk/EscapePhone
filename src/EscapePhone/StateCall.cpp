@@ -7,17 +7,15 @@
 
 
 
-void StateCall::setMp3(DeviceMp3::Mp3 mp3) {
-  playMp3 = mp3;
+void StateCall::init(DeviceMp3::Mp3 mp3) {
+  devices.getMp3().play(mp3);
 }
 
 
-StateBase & StateCall::processState() {
+StateBase & StateCall::process() {
   if (devices.getHangUp().isHangUp()) {
-    return stateFactory.getHangUpState();
+    return stateFactory.initHangUpState();
   }
-
-  devices.getMp3().play(playMp3);
 
   return *this;
 }

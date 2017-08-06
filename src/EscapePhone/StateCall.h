@@ -12,16 +12,12 @@
 class StateCall : public StateBase {
 
 
-    DeviceMp3::Mp3 playMp3 = DeviceMp3::MP3_NONE;
-
-
 public:
     StateCall(StateFactory & stateFactory, Devices & devices)
         : StateBase(stateFactory, devices) {};
 
-    void setMp3(DeviceMp3::Mp3 mp3);
-
-    StateBase & processState() override;
+    void init(DeviceMp3::Mp3 mp3);
+    StateBase & process() override;
 
 };
 

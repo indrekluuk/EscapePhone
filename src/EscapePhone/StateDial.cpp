@@ -8,22 +8,21 @@
 
 
 
-void StateDial::reset() {
+void StateDial::init() {
   devices.getDial().getDialedNumber().reset();
+  devices.getMp3().play(DeviceMp3::MP3_DIAL_TONE);
 }
 
 
-StateBase & StateDial::processState() {
+StateBase & StateDial::process() {
   if (devices.getHangUp().isHangUp()) {
-    return stateFactory.getHangUpState();
+    return stateFactory.initHangUpState();
   }
 
   if (devices.getDial().getDialedNumber().isNumberDialed()) {
     return phoneBook.getStateForNumber(devices.getDial().getDialedNumber());
   } else if (devices.getDial().isDialInProgress()) {
     devices.getMp3().stop();
-  } else {
-    devices.getMp3().play(DeviceMp3::MP3_DIAL_TONE);
   }
 
   return *this;

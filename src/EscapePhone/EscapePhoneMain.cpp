@@ -15,10 +15,10 @@ EscapePhoneMain::EscapePhoneMain() {
 
 
 void EscapePhoneMain::run() {
-  currentSate = &stateFactory.getHangUpState();
+  currentSate = &stateFactory.initHangUpState();
 
   while(true) {
-    currentSate = &currentSate->processState();
+    currentSate = &currentSate->process();
     devices.process();
   }
 }

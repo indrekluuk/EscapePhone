@@ -9,9 +9,9 @@
 
 StateBase & PhoneBook::getStateForNumber(DeviceDialedNumber & dialedNumber) {
   if (dialedNumber.isNumber("112") || dialedNumber.isNumber("911") || dialedNumber.isNumber("999")) {
-    return stateFactory.getCallState(DeviceMp3::MP3_NEW_EMERGENCY_SERVICES);
+    return stateFactory.initCallState(DeviceMp3::MP3_NEW_EMERGENCY_SERVICES);
   } else {
-    return stateFactory.getBusyState();
+    return stateFactory.initBusyState();
   }
 }
 

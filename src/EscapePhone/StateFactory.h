@@ -34,10 +34,10 @@ public:
     {}
 
 
-    StateHangUp & getHangUpState();
-    StateDial & getDialState();
-    StateBusy & getBusyState();
-    StateCall & getCallState(DeviceMp3::Mp3 mp3);
+    StateHangUp & initHangUpState();
+    StateDial & initDialState();
+    StateBusy & initBusyState();
+    StateCall & initCallState(DeviceMp3::Mp3 mp3);
 
 
 
