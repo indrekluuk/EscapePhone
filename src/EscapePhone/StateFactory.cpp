@@ -10,16 +10,22 @@
 
 
 StateHangUp & StateFactory::getHangUpState() {
-  return hangUpState;
+  return stateHangUp;
 }
 
 
 StateDial & StateFactory::getDialState() {
-  dialState.reset();
-  return dialState;
+  stateDial.reset();
+  return stateDial;
 }
 
 StateBusy & StateFactory::getBusyState() {
-  return busyState;
+  return stateBusy;
 }
+
+StateCall & StateFactory::getCallState(DeviceMp3::Mp3 mp3) {
+  stateCall.setMp3(mp3);
+  return stateCall;
+}
+
 

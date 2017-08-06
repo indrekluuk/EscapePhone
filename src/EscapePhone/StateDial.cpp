@@ -19,7 +19,7 @@ StateBase & StateDial::processState() {
   }
 
   if (devices.getDial().getDialedNumber().isNumberDialed()) {
-    return stateFactory.getBusyState();
+    return phoneBook.getStateForNumber(devices.getDial().getDialedNumber());
   } else if (devices.getDial().isDialInProgress()) {
     devices.getMp3().stop();
   } else {

@@ -8,14 +8,19 @@
 
 
 #include "StateBase.h"
+#include "PhoneBook.h"
 
 
 class StateDial : public StateBase {
 
 
+    PhoneBook phoneBook;
+
+
 public:
     StateDial(StateFactory & stateFactory, Devices & devices)
-        : StateBase(stateFactory, devices) {};
+        : StateBase(stateFactory, devices),
+          phoneBook(stateFactory) {};
 
     void reset();
 

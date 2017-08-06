@@ -10,30 +10,34 @@
 #include "StateHangUp.h"
 #include "StateDial.h"
 #include "StateBusy.h"
+#include "StateCall.h"
 
 
 class StateFactory {
 
 
     Devices & devices;
-    StateHangUp hangUpState;
-    StateDial dialState;
-    StateBusy busyState;
+    StateHangUp stateHangUp;
+    StateDial stateDial;
+    StateBusy stateBusy;
+    StateCall stateCall;
 
 
 
 public:
     StateFactory(Devices & devices) :
         devices(devices),
-        hangUpState(*this, devices),
-        dialState(*this, devices),
-        busyState(*this, devices)
+        stateHangUp(*this, devices),
+        stateDial(*this, devices),
+        stateBusy(*this, devices),
+        stateCall(*this, devices)
     {}
 
 
     StateHangUp & getHangUpState();
     StateDial & getDialState();
     StateBusy & getBusyState();
+    StateCall & getCallState(DeviceMp3::Mp3 mp3);
 
 
 

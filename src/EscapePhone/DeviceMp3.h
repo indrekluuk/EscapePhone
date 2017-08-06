@@ -19,7 +19,8 @@ public:
         MP3_NONE = 0,
         MP3_DIAL_TONE = 1,
         MP3_BUSY_TONE = 2,
-        MP3_RINGING_TONE = 3
+        MP3_RINGING_TONE = 3,
+        MP3_NEW_EMERGENCY_SERVICES = 4
     };
 private:
 
