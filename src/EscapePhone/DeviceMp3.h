@@ -22,6 +22,7 @@ public:
         MP3_RINGING_TONE = 3,
         MP3_NEW_EMERGENCY_SERVICES = 4,
         MP3_LAUGH = 5,
+        MP3_STATE_YOUR_EMERGENCY = 6,
     };
 private:
 
