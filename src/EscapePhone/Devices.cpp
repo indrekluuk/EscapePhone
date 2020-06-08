@@ -5,6 +5,9 @@
 #include "Devices.h"
 
 
+Devices::Devices() {
+}
+
 
 DeviceMp3 & Devices::getMp3() {
   return mp3;

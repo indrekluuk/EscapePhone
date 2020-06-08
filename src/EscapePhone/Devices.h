@@ -31,6 +31,8 @@ class Devices {
 
 public:
 
+    Devices();
+
     DeviceMp3 & getMp3();
     DeviceRinger & getRinger();
     DeviceHangUp & getHangUp();
